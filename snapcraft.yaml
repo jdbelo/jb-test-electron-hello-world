@@ -21,8 +21,6 @@ apps:
 parts:
   electron-helloworld:
     plugin: nodejs
-    nodejs-version: 12.18.2
-    nodejs-package-manager: npm
     source: https://github.com/electron/electron-quick-start.git
     after: [desktop-gtk3]
     override-build: |
