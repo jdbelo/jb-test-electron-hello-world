@@ -54,6 +54,7 @@ parts:
     - libxtst6
 
     build-packages:
+    - npm
     - unzip
 
   # Adapted from snapcraft-desktop-helpers https://github.com/ubuntu/snapcraft-desktop-helpers/blob/master/snapcraft.yaml#L183
