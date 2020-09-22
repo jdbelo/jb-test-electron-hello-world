@@ -42,7 +42,8 @@ parts:
           export GLOBAL_AGENT_HTTPS_PROXY="${http_proxy}"
         fi
 
-        npm install electron electron-packager &&
+        npm install 
+        npm electron electron-packager
         ./node_modules/.bin/electron-packager . --overwrite --platform=linux --arch=$ARCH --output=release-build --prune=true
         cp -v -R ./electron-quick-start-linux-$ARCH $SNAPCRAFT_PART_INSTALL/electron-helloworld
     stage-packages:
@@ -54,7 +55,6 @@ parts:
     - libxtst6
 
     build-packages:
-    - npm
     - unzip
 
   # Adapted from snapcraft-desktop-helpers https://github.com/ubuntu/snapcraft-desktop-helpers/blob/master/snapcraft.yaml#L183
