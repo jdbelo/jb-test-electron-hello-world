@@ -21,8 +21,6 @@ apps:
 parts:
   electron-helloworld:
     plugin: nodejs
-    nodejs-version: 12.18.2
-    nodejs-package-manager: npm
     source: https://github.com/electron/electron-quick-start.git
     after: [desktop-gtk3]
     override-build: |
@@ -34,18 +32,21 @@ parts:
           *) echo "ERROR: electron does not support the '$SNAPCRAFT_ARCH_TRIPLET' architecture" && exit 1;;
         esac
         
-        PATH=$PATH:$SNAPCRAFT_PART_SRC/../npm/bin
-        
-        npm config set unsafe-perm True
-        
         if [ -n "$http_proxy" ]; then
           export ELECTRON_GET_USE_PROXY=1
           export GLOBAL_AGENT_HTTP_PROXY="${http_proxy}"
           export GLOBAL_AGENT_HTTPS_PROXY="${http_proxy}"
         fi
-
-        npm install 
-        npm electron electron-packager
+        
+        # Use snapcraft-installed nodejs.
+        PATH=$(readlink -f ../npm/bin):$PATH
+        
+        # Pin electron to reduce chance of future breakage.
+        npm install electron@10.1.2
+        
+        # Pin electron-packager as 15.0.0 removes support for node<10.
+        npm install electron-packager@14.2.1
+        
         ./node_modules/.bin/electron-packager . --overwrite --platform=linux --arch=$ARCH --output=release-build --prune=true
         cp -v -R ./electron-quick-start-linux-$ARCH $SNAPCRAFT_PART_INSTALL/electron-helloworld
     stage-packages:
@@ -87,4 +88,4 @@ parts:
       - locales-all
       - xdg-user-dirs
       - ibus-gtk3
-      - libibus-1.0-5 
+      - libibus-1.0-5
