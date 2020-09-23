@@ -56,6 +56,7 @@ parts:
     - libx11-xcb1
     - libxss1
     - libxtst6
+    - libxcb-dri3-0
 
     build-packages:
     - nodejs
