@@ -89,5 +89,4 @@ parts:
       - xdg-user-dirs
       - ibus-gtk3
       - libibus-1.0-5
-      - libgdk-x11-2.0.so.0
-      - libgtk-x11-2.0.so.0
+      - libgtk2.0-0
