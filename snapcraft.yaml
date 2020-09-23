@@ -56,6 +56,10 @@ parts:
     - libx11-xcb1
     - libxss1
     - libxtst6
+    - libdrm2
+    - libgbm1
+    - libwayland-server0
+    - libxcb-dri3-0
 
     build-packages:
     - nodejs
