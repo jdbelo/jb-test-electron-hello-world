@@ -56,7 +56,6 @@ parts:
     - libx11-xcb1
     - libxss1
     - libxtst6
-    - libxcb-dri3-0
 
     build-packages:
     - nodejs
@@ -90,3 +89,4 @@ parts:
       - xdg-user-dirs
       - ibus-gtk3
       - libibus-1.0-5
+      - libgtk2.0.0
