@@ -8,7 +8,7 @@ confinement: strict
 grade: devel
 
 apps:
-  jb-test-electron-hello-world:
+  electron-hello-world:
     command: desktop-launch xwayland-kiosk-launch "$SNAP/electron-helloworld/electron-quick-start" "--no-sandbox"
     plugs:
     - browser-support
@@ -23,6 +23,7 @@ apps:
     restart-condition: always
     command: desktop-launch xwayland-kiosk-launch "$SNAP/electron-helloworld/electron-quick-start" "--no-sandbox"
     plugs:
+    - browser-support
     - network
     - network-bind
     - opengl
